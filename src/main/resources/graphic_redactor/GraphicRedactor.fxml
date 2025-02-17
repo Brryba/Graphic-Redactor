@@ -3,6 +3,8 @@
 <?import graphic_redactor.DrawingCanvas?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,97 +13,110 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.ToggleGroup?>
 
-<?import javafx.scene.control.ToggleButton?>
-<AnchorPane maxHeight="575.0" maxWidth="1200.0" minHeight="575.0" minWidth="1200.0" prefHeight="575.0"
-            prefWidth="1200.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="graphic_redactor.MainController">
-    <DrawingCanvas fx:id="canvas" height="453.0" layoutY="100.0" onKeyPressed="#onKeyPress"
-                   onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" onMouseReleased="#onMouseReleased"
-                   width="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
-    <ToolBar prefHeight="100.0" prefWidth="1200.0">
-        <items>
-            <StackPane xmlns:fx="http://javafx.com/fxml">
-                <HBox xmlns:fx="http://javafx.com/fxml">
-                    <fx:define>
-                        <ToggleGroup fx:id="figuresToggleGroup"/>
-                    </fx:define>
-                    <ToggleButton selected="true" onKeyPressed="#onKeyPress" userData="LINE" toggleGroup="$figuresToggleGroup">
-                        <graphic>
-                            <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                                <ImageView fitHeight="51.0" fitWidth="144.0">
-                                    <Image url="@../images/line.png"/>
-                                </ImageView>
-                                <Label prefHeight="22.0" prefWidth="30.0" text="Line">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Label>
-                            </VBox>
-                        </graphic>
-                    </ToggleButton>
-                    <ToggleButton userData="ELLIPSE" toggleGroup="$figuresToggleGroup">
-                        <graphic>
-                            <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                                <ImageView fitHeight="51.0" fitWidth="144.0">
-                                    <Image url="@../images/ellipse.png"/>
-                                </ImageView>
-                                <Label prefHeight="20.0" prefWidth="41.0" text="Ellipse">
-                                    <font>
-                                        <Font size="14.0"/>
-                                    </font>
-                                </Label>
-                            </VBox>
-                        </graphic>
-                    </ToggleButton>
-                    <ToggleButton userData="RECTANGULAR" toggleGroup="$figuresToggleGroup">
-                        <graphic>
-                            <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                                <ImageView fitHeight="51.0" fitWidth="144.0">
-                                    <Image url="@../images/rectangular.png"/>
-                                </ImageView>
-                                <Label prefHeight="20.0" prefWidth="75.0" text="Rectangular">
-                                    <font>
-                                        <Font size="14.0"/>
-                                    </font>
-                                </Label>
-                            </VBox>
-                        </graphic>
-                    </ToggleButton>
-                    <ToggleButton userData="BROKEN_LINE" onKeyPressed="#ignoreEnterButton" toggleGroup="$figuresToggleGroup">
-                        <graphic>
-                            <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                                <ImageView fitHeight="51.0" fitWidth="144.0">
-                                    <Image url="@../images/brokenLine.png"/>
-                                </ImageView>
-                                <Label prefHeight="22.0" prefWidth="78.0" text="Broken Line">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Label>
-                            </VBox>
-                        </graphic>
-                    </ToggleButton>
-                    <ToggleButton userData="POLYGON" onKeyPressed="#ignoreEnterButton" toggleGroup="$figuresToggleGroup">
-                        <graphic>
-                            <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                                <ImageView fitHeight="51.0" fitWidth="144.0">
-                                    <Image url="@../images/polygon.png"/>
-                                </ImageView>
-                                <Label prefHeight="22.0" prefWidth="57.0" text="Polygon">
-                                    <font>
-                                        <Font size="15.0"/>
-                                    </font>
-                                </Label>
-                            </VBox>
-                        </graphic>
-                    </ToggleButton>
-                </HBox>
-            </StackPane>
-        </items>
+<AnchorPane maxHeight="1500.0" maxWidth="1200.0" minHeight="1500.0" minWidth="200.0" prefHeight="1500.0" prefWidth="200.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphic_redactor.MainController">
+    <DrawingCanvas fx:id="canvas" height="792.0" layoutX="9.6" layoutY="110.0" onKeyPressed="#onKeyPress" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" onMouseReleased="#onMouseReleased" width="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+    <ToolBar prefHeight="120.0" prefWidth="1200.0" style="-fx-background-color: #F3F3F3;">
         <padding>
-            <Insets left="200.0" top="8.0"/>
+            <Insets left="165.0" top="13.0" />
         </padding>
+        <StackPane xmlns:fx="http://javafx.com/fxml">
+            <HBox prefHeight="0.0" prefWidth="812.0" xmlns:fx="http://javafx.com/fxml">
+                <ToggleButton onKeyPressed="#onKeyPress" selected="true" style="-fx-border-radius: 100;" userData="LINE">
+                    <graphic>
+                        <VBox alignment="CENTER" prefHeight="82.0" prefWidth="146.0">
+                            <ImageView fitHeight="51.0" fitWidth="144.0">
+                                <Image url="@../images/line.png" />
+                            </ImageView>
+                            <Label prefHeight="22.0" prefWidth="30.0" text="Line">
+                                <font>
+                                    <Font name="System Bold" size="15.0" />
+                                </font>
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                        <VBox.margin>
+                           <Insets top="5.0" />
+                        </VBox.margin>
+                            </Label>
+                        </VBox>
+                    </graphic>
+               <toggleGroup>
+                  <ToggleGroup fx:id="figuresToggleGroup" />
+               </toggleGroup>
+                </ToggleButton>
+                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="ELLIPSE">
+                    <graphic>
+                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
+                            <ImageView fitHeight="51.0" fitWidth="144.0">
+                                <Image url="@../images/ellipse.png" />
+                            </ImageView>
+                            <Label prefHeight="22.0" prefWidth="50.0" text="Ellipse">
+                                <font>
+                                    <Font name="System Bold" size="15.0" />
+                                </font>
+                        <padding>
+                           <Insets top="5.0" />
+                        </padding>
+                            </Label>
+                        </VBox>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="RECTANGULAR">
+                    <graphic>
+                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
+                            <ImageView fitHeight="51.0" fitWidth="144.0">
+                                <Image url="@../images/rectangular.png" />
+                            </ImageView>
+                            <Label prefHeight="22.0" prefWidth="87.0" text="Rectangular">
+                                <font>
+                                    <Font name="System Bold" size="15.0" />
+                                </font>
+                        <padding>
+                           <Insets top="5.0" />
+                        </padding>
+                            </Label>
+                        </VBox>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="BROKEN_LINE">
+                    <graphic>
+                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
+                            <ImageView fitHeight="51.0" fitWidth="144.0">
+                                <Image url="@../images/brokenLine.png" />
+                            </ImageView>
+                            <Label prefHeight="22.0" prefWidth="84.0" text="Broken Line">
+                                <font>
+                                    <Font name="System Bold" size="15.0" />
+                                </font>
+                        <padding>
+                           <Insets top="5.0" />
+                        </padding>
+                            </Label>
+                        </VBox>
+                    </graphic>
+                </ToggleButton>
+                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="POLYGON">
+                    <graphic>
+                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
+                            <ImageView fitHeight="51.0" fitWidth="144.0">
+                                <Image url="@../images/polygon.png" />
+                            </ImageView>
+                            <Label prefHeight="22.0" prefWidth="59.0" text="Polygon">
+                                <font>
+                                    <Font name="System Bold" size="15.0" />
+                                </font>
+                        <padding>
+                           <Insets top="5.0" />
+                        </padding>
+                            </Label>
+                        </VBox>
+                    </graphic>
+                </ToggleButton>
+            </HBox>
+        </StackPane>
     </ToolBar>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </AnchorPane>

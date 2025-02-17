@@ -1,12 +1,8 @@
 package graphic_redactor;
 
 import figures.*;
-import figures.complex.BrokenLine;
-import figures.complex.ComplexFigure;
-import figures.complex.Polygon;
-import figures.simple.Ellipse;
-import figures.simple.Line;
-import figures.simple.Rectangular;
+import figures.complex.*;
+import figures.simple.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -20,35 +16,35 @@ import java.util.List;
 public class MainController {
     @FXML
     private DrawingCanvas canvas;
-    private Figure figure;
+    private Figure currentFigure;
     private final List<Figure> figures = new ArrayList<>();
     @FXML
     private ToggleGroup figuresToggleGroup;
 
     public void onMousePressed(MouseEvent event) {
-        if (figure == null) {
-            figure = createFigure(event.getX(), event.getY());
-            figures.add(figure);
-        } else if (figure instanceof ComplexFigure) {
-            ((ComplexFigure) figure).addPoint(event.getX(), event.getY());
+        if (currentFigure == null) {
+            currentFigure = createFigure(event.getX(), event.getY());
+            figures.add(currentFigure);
+        } else if (currentFigure instanceof ComplexFigure) {
+            ((ComplexFigure) currentFigure).addPoint(event.getX(), event.getY());
         }
         canvas.redraw(figures);
     }
 
     public void onMouseDragged(MouseEvent event) {
-        figure.setEndCoords(event.getX(), event.getY());
+        currentFigure.setEndCoords(event.getX(), event.getY());
         canvas.redraw(figures);
     }
 
     public void onMouseReleased() {
-        if (!(figure instanceof ComplexFigure)) {
-            figure = null;
+        if (currentFigure instanceof SimpleFigure) {
+            currentFigure = null;
         }
     }
 
     public void onKeyPress(KeyEvent event) {
-        if (figure instanceof ComplexFigure && event.getCode() == KeyCode.ENTER) {
-            figure = null;
+        if (currentFigure instanceof ComplexFigure && event.getCode() == KeyCode.ENTER) {
+            currentFigure = null;
         }
     }
 
@@ -76,6 +72,7 @@ public class MainController {
             if (newToggle == null) {
                 figuresToggleGroup.selectToggle(oldToggle);
             }
+            currentFigure = null;
         });
     }
 }
