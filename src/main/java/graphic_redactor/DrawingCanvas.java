@@ -1,6 +1,6 @@
 package graphic_redactor;
 
-import Figures.Figure;
+import figures.Figure;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -14,5 +14,9 @@ public class DrawingCanvas extends Canvas {
         for (Figure figure : figures) {
             figure.draw(gc);
         }
+    }
+
+    public DrawingCanvas() {
+        super();
     }
 }
