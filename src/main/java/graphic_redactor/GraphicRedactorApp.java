@@ -14,8 +14,12 @@ public class GraphicRedactorApp extends Application {
         Scene scene = new Scene(fxmlLoader.load(), stage.getMinWidth(), stage.getMinHeight());
         stage.setTitle("Graphic Redactor");
         stage.setScene(scene);
-
         stage.setResizable(false);
+
+        scene.setOnKeyPressed(keyEvent -> {
+            MainController controller = fxmlLoader.getController();
+            controller.onKeyPress(keyEvent);
+        });
 
         stage.show();
         stage.centerOnScreen();
