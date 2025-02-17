@@ -1,4 +1,4 @@
-package figures;
+package figures.simple;
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -9,8 +9,8 @@ public class Line extends SimpleFigure {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.moveTo(startX, startY);
-        gc.lineTo(endX, endY);
+        gc.moveTo(start.getX(), start.getY());
+        gc.lineTo(end.getX(), end.getY());
         gc.stroke();
     }
 }

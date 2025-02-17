@@ -1,21 +1,20 @@
-package figures;
+package figures.simple;
 
+import figures.Figure;
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class SimpleFigure implements Figure {
-    protected double startX, startY, endX, endY;
+    protected Point2D start, end;
 
     public abstract void draw(GraphicsContext gc);
 
     public void setEndCoords(double endX, double endY) {
-        this.endX = endX;
-        this.endY = endY;
+        this.end = new Point2D(endX, endY);
     }
 
     public SimpleFigure(double startX, double startY, double endX, double endY) {
-        this.startX = startX;
-        this.startY = startY;
-        this.endX = endX;
-        this.endY = endY;
+        this.start = new Point2D(startX, startY);
+        this.end = new Point2D(endX, endY);
     }
 }

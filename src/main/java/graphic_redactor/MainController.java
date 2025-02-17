@@ -1,6 +1,12 @@
 package graphic_redactor;
 
 import figures.*;
+import figures.complex.BrokenLine;
+import figures.complex.ComplexFigure;
+import figures.complex.Polygon;
+import figures.simple.Ellipse;
+import figures.simple.Line;
+import figures.simple.Rectangular;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
@@ -34,7 +40,7 @@ public class MainController {
         canvas.redraw(figures);
     }
 
-    public void onMouseReleased(MouseEvent event) {
+    public void onMouseReleased() {
         if (!(figure instanceof ComplexFigure)) {
             figure = null;
         }

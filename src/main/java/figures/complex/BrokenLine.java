@@ -1,4 +1,4 @@
-package figures;
+package figures.complex;
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -9,9 +9,9 @@ public class BrokenLine extends ComplexFigure {
 
     @Override
     public void draw(GraphicsContext gc) {
-        for (int i = 1; i < coordsX.size(); i++) {
-            gc.moveTo(coordsX.get(i - 1), coordsY.get(i - 1));
-            gc.lineTo(coordsX.get(i), coordsY.get(i));
+        for (int i = 1; i < coords.size(); i++) {
+            gc.moveTo(coords.get(i - 1).getX(), coords.get(i - 1).getY());
+            gc.lineTo(coords.get(i).getX(), coords.get(i).getY());
             gc.stroke();
         }
     }

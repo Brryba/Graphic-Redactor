@@ -1,4 +1,4 @@
-package figures;
+package figures.simple;
 
 import javafx.scene.canvas.GraphicsContext;
 
@@ -9,7 +9,7 @@ public class Ellipse extends SimpleFigure {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.fillOval(Math.min(startX, endX), Math.min(startY, endY),
-                Math.abs(startX - endX), Math.abs(startY - endY));
+        gc.fillOval(Math.min(start.getX(), end.getX()), Math.min(start.getY(), end.getY()),
+                Math.abs(start.getX() - end.getX()), Math.abs(start.getY() - end.getY()));
     }
 }

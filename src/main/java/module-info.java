@@ -7,4 +7,6 @@ module org.example.graphic_editor {
     opens graphic_redactor to javafx.fxml;
     exports graphic_redactor;
     exports figures;
+    exports figures.simple;
+    exports figures.complex;
 }
