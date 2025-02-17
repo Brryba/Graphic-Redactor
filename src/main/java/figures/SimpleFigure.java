@@ -1,8 +1,8 @@
-package Figures;
+package figures;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public abstract class Figure {
+public abstract class SimpleFigure implements Figure {
     protected double startX, startY, endX, endY;
 
     public abstract void draw(GraphicsContext gc);
@@ -12,7 +12,7 @@ public abstract class Figure {
         this.endY = endY;
     }
 
-    Figure(double startX, double startY, double endX, double endY) {
+    public SimpleFigure(double startX, double startY, double endX, double endY) {
         this.startX = startX;
         this.startY = startY;
         this.endX = endX;

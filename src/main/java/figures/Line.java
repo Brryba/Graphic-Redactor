@@ -1,10 +1,10 @@
-package Figures;
+package figures;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class Line extends Figure {
-    public Line(double startX, double endX, double startY, double endY) {
-        super(startX, endX, startY, endY);
+public class Line extends SimpleFigure {
+    public Line(double startX, double startY, double endX, double endY) {
+        super(startX, startY, endX, endY);
     }
 
     @Override

@@ -1,10 +1,10 @@
-package Figures;
+package figures;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class ComplexFigure extends Figure {
+public abstract class ComplexFigure implements Figure {
     protected List<Double> coordsX, coordsY;
 
     public void addPoint(double newX, double newY) {
@@ -18,8 +18,7 @@ public abstract class ComplexFigure extends Figure {
         coordsY.set(coordsY.size() - 1, endY);
     }
 
-    ComplexFigure(double startX, double startY, double endX, double endY) {
-        super(startX, startY, endX, endY);
+    ComplexFigure(double startX, double startY) {
         this.coordsX = new ArrayList<>(Arrays.asList(startX, startX));
         this.coordsY = new ArrayList<>(Arrays.asList(startY, startY));
     }

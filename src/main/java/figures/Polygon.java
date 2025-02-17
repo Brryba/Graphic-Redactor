@@ -1,10 +1,10 @@
-package Figures;
+package figures;
 
 import javafx.scene.canvas.GraphicsContext;
 
 public class Polygon extends ComplexFigure {
-    public Polygon(double startX, double startY, double endX, double endY) {
-        super(startX, startY, endX, endY);
+    public Polygon(double startX, double startY) {
+        super(startX, startY);
     }
 
     @Override
