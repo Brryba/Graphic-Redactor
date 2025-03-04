@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ComplexFigure implements Figure {
+public abstract class ComplexFigure extends Figure {
     protected List<Point2D> coords;
 
     public void addPoint(double newX, double newY) {
