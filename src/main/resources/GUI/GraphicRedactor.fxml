@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import graphic_redactor.DrawingCanvas?>
+<?import GUI.DrawingCanvas?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1500.0" maxWidth="1200.0" minHeight="1500.0" minWidth="200.0" prefHeight="1500.0" prefWidth="200.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphic_redactor.MainController">
+<AnchorPane maxHeight="1500.0" maxWidth="1200.0" minHeight="1500.0" minWidth="200.0" prefHeight="1500.0" prefWidth="200.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainController" onKeyReleased="#onKeyReleased">
     <DrawingCanvas fx:id="canvas" height="792.0" layoutX="9.6" layoutY="110.0" onKeyPressed="#onKeyPress" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" onMouseReleased="#onMouseReleased" width="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
     <ToolBar prefHeight="120.0" prefWidth="1200.0" style="-fx-background-color: #F3F3F3;">
         <padding>

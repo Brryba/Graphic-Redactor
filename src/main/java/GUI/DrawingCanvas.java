@@ -1,8 +1,9 @@
-package graphic_redactor;
+package GUI;
 
 import figures.Figure;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import storage.Figures;
 
 import java.util.List;
 

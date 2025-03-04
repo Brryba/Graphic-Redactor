@@ -4,9 +4,10 @@ module org.example.graphic_editor {
 
     requires com.dlsc.formsfx;
 
-    opens graphic_redactor to javafx.fxml;
-    exports graphic_redactor;
+    opens GUI to javafx.fxml;
+    exports GUI;
     exports figures;
     exports figures.simple;
     exports figures.complex;
+    exports storage;
 }

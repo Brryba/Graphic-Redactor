@@ -2,7 +2,7 @@ package figures.complex;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class BrokenLine extends ComplexFigure {
+public class BrokenLine extends ComplexFigure implements Undoable {
     public BrokenLine(double startX, double startY) {
         super(startX, startY);
     }
@@ -14,5 +14,15 @@ public class BrokenLine extends ComplexFigure {
             gc.lineTo(coords.get(i).getX(), coords.get(i).getY());
             gc.stroke();
         }
+    }
+
+    @Override
+    public void deletePoint() {
+        this.coords.removeLast();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.coords.size() <= 1;
     }
 }
