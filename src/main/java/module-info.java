@@ -10,4 +10,5 @@ module org.example.graphic_editor {
     exports figures.simple;
     exports figures.complex;
     exports storage;
+    exports figures.interfaces;
 }
