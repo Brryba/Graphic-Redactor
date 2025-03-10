@@ -2,121 +2,112 @@
 
 <?import GUI.DrawingCanvas?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ToggleButton?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="1500.0" maxWidth="1200.0" minHeight="1500.0" minWidth="200.0" prefHeight="1500.0" prefWidth="200.0" style="-fx-background-color: #FFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainController" onKeyReleased="#onKeyReleased">
-    <DrawingCanvas fx:id="canvas" height="792.0" layoutX="9.6" layoutY="110.0" onKeyPressed="#onKeyPress" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" onMouseReleased="#onMouseReleased" width="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-    <ToolBar prefHeight="120.0" prefWidth="1200.0" style="-fx-background-color: #F3F3F3;">
+<?import java.net.URL?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<AnchorPane maxHeight="1500.0" maxWidth="1201.0" minHeight="1500.0" minWidth="200.0" onKeyReleased="#onKeyReleased"
+            prefHeight="1500.0" prefWidth="1201.0" style="-fx-background-color: #FFF;"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="GUI.MainController">
+    <stylesheets>
+        <URL value="@style.css"/>
+    </stylesheets>
+    <DrawingCanvas fx:id="canvas" height="828.0" layoutX="9.6" layoutY="74.0" onKeyPressed="#onKeyPress"
+                   onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" onMouseReleased="#onMouseReleased"
+                   width="1200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0"/>
+    <ToolBar prefHeight="80.0" prefWidth="1200.0" style="-fx-background-color: #E8F5E9;">
         <padding>
-            <Insets left="165.0" top="13.0" />
+            <Insets top="13.0"/>
         </padding>
-        <StackPane xmlns:fx="http://javafx.com/fxml">
-            <HBox prefHeight="0.0" prefWidth="812.0" xmlns:fx="http://javafx.com/fxml">
-                <ToggleButton onKeyPressed="#onKeyPress" selected="true" style="-fx-border-radius: 100;" userData="LINE">
+        <items>
+            <Pane prefHeight="0.0" prefWidth="0.0">
+                <Button layoutX="40.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="button">
                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="82.0" prefWidth="146.0">
-                            <ImageView fitHeight="51.0" fitWidth="144.0">
-                                <Image url="@../images/line.png" />
+                        <VBox alignment="CENTER">
+                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                                <Image url="@../images/open.png"/>
                             </ImageView>
-                            <Label prefHeight="22.0" prefWidth="30.0" text="Line">
-                                <font>
-                                    <Font name="System Bold" size="15.0" />
-                                </font>
-                        <opaqueInsets>
-                           <Insets />
-                        </opaqueInsets>
-                        <VBox.margin>
-                           <Insets top="5.0" />
-                        </VBox.margin>
-                            </Label>
+                            <Label text="Open file" alignment="CENTER" styleClass="header"/>
                         </VBox>
                     </graphic>
-               <toggleGroup>
-                  <ToggleGroup fx:id="figuresToggleGroup" />
-               </toggleGroup>
-                </ToggleButton>
-                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="ELLIPSE">
+                </Button>
+
+                <Button layoutX="185.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header">
                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                            <ImageView fitHeight="51.0" fitWidth="144.0">
-                                <Image url="@../images/ellipse.png" />
+                        <VBox alignment="CENTER">
+                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                                <Image url="@../images/save.png"/>
                             </ImageView>
-                            <Label prefHeight="22.0" prefWidth="50.0" text="Ellipse">
-                                <font>
-                                    <Font name="System Bold" size="15.0" />
-                                </font>
-                        <padding>
-                           <Insets top="5.0" />
-                        </padding>
-                            </Label>
+                            <Label text="Save to file" alignment="CENTER" styleClass="header"/>
                         </VBox>
                     </graphic>
-                </ToggleButton>
-                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="RECTANGULAR">
+                </Button>
+
+                <Button layoutX="330.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header">
                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                            <ImageView fitHeight="51.0" fitWidth="144.0">
-                                <Image url="@../images/rectangular.png" />
+                        <VBox alignment="CENTER">
+                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                                <Image url="@../images/undo.png"/>
                             </ImageView>
-                            <Label prefHeight="22.0" prefWidth="87.0" text="Rectangular">
-                                <font>
-                                    <Font name="System Bold" size="15.0" />
-                                </font>
-                        <padding>
-                           <Insets top="5.0" />
-                        </padding>
-                            </Label>
+                            <Label text="Undo" alignment="CENTER" styleClass="header"/>
                         </VBox>
                     </graphic>
-                </ToggleButton>
-                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="BROKEN_LINE">
+                </Button>
+
+                <Button layoutX="475.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header">
                     <graphic>
-                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                            <ImageView fitHeight="51.0" fitWidth="144.0">
-                                <Image url="@../images/broken-line.png" />
+                        <VBox alignment="CENTER">
+                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                                <Image url="@../images/redo.png"/>
                             </ImageView>
-                            <Label prefHeight="22.0" prefWidth="84.0" text="Broken Line">
-                                <font>
-                                    <Font name="System Bold" size="15.0" />
-                                </font>
-                        <padding>
-                           <Insets top="5.0" />
-                        </padding>
-                            </Label>
+                            <Label text="Redo" alignment="CENTER" styleClass="header"/>
                         </VBox>
                     </graphic>
-                </ToggleButton>
-                <ToggleButton onKeyPressed="#ignoreEnterButton" prefHeight="90.0" prefWidth="162.0" toggleGroup="$figuresToggleGroup" userData="POLYGON">
-                    <graphic>
-                        <VBox alignment="CENTER" prefHeight="73.0" prefWidth="145.0">
-                            <ImageView fitHeight="51.0" fitWidth="144.0">
-                                <Image url="@../images/polygon.png" />
-                            </ImageView>
-                            <Label prefHeight="22.0" prefWidth="59.0" text="Polygon">
-                                <font>
-                                    <Font name="System Bold" size="15.0" />
-                                </font>
-                        <padding>
-                           <Insets top="5.0" />
-                        </padding>
-                            </Label>
-                        </VBox>
-                    </graphic>
-                </ToggleButton>
-            </HBox>
-        </StackPane>
+                </Button>
+
+                <Label layoutX="666.0" layoutY="-5.0" text="Figure" styleClass="header"/>
+                <ComboBox layoutX="622" layoutY="25" value="Line" prefWidth="140" styleClass="header; button"
+                          style="-fx-background-color:#C8E6C9">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Line"/>
+                            <String fx:value="Ellipse"/>
+                            <String fx:value="Rectangular"/>
+                            <String fx:value="Polygon"/>
+                            <String fx:value="Broken Line"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <Label layoutX="835.0" layoutY="-5.0" text="Thickness" styleClass="header"/>
+                <Slider layoutX="803.0" layoutY="28.0" max="10" prefWidth="135.0" blockIncrement="1" majorTickUnit="5"
+                        minorTickCount="4"
+                        showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+
+                <Label layoutX="968.0" layoutY="-8.0" text="Border color" styleClass="header"/>
+                <ColorPicker layoutX="980.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
+                             style="-fx-background-color:#C8E6C9"/>
+
+                <Label layoutX="1075.0" layoutY="-8.0" text="Figure color" styleClass="header"/>
+                <ColorPicker layoutX="1087.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
+                             style="-fx-background-color:#C8E6C9"/>
+            </Pane>
+        </items>
     </ToolBar>
-   <opaqueInsets>
-      <Insets />
-   </opaqueInsets>
+    <opaqueInsets>
+        <Insets/>
+    </opaqueInsets>
 </AnchorPane>

@@ -5,17 +5,14 @@ import figures.complex.*;
 import figures.simple.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.*;
 import storage.Figures;
-import utils.UndoManager;
+import services.UndoManager;
 
 public class MainController {
     @FXML
     private DrawingCanvas canvas;
     private Figure currentFigure;
-    @FXML
-    private ToggleGroup figuresToggleGroup;
 
     public void onMousePressed(MouseEvent event) {
         if (currentFigure == null) {
@@ -47,7 +44,7 @@ public class MainController {
 
     @FXML
     public void onKeyReleased(KeyEvent event) {
-        if (new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_ANY)
+        if (new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_ANY)
                 .match(event)) {
             UndoManager.undo();
         }
@@ -62,7 +59,7 @@ public void ignoreEnterButton(KeyEvent event) {
 }
 
 private Figure createFigure(double startX, double startY) {
-    return switch (figuresToggleGroup.getSelectedToggle().getUserData().toString()) {
+    return switch ("a") {
         case ("LINE") -> new Line(startX, startY, startX, startY);
         case ("ELLIPSE") -> new Ellipse(startX, startY, startX, startY);
         case ("RECTANGULAR") -> new Rectangular(startX, startY, startX, startY);
@@ -74,11 +71,6 @@ private Figure createFigure(double startX, double startY) {
 
 @FXML
 public void initialize() {
-    figuresToggleGroup.selectedToggleProperty().addListener((observable, oldToggle, newToggle) -> {
-        if (newToggle == null) {
-            figuresToggleGroup.selectToggle(oldToggle);
-        }
-        currentFigure = null;
-    });
+
 }
 }
