@@ -60,9 +60,9 @@ public void ignoreEnterButton(KeyEvent event) {
 
 private Figure createFigure(double startX, double startY) {
     return switch ("a") {
-        case ("LINE") -> new Line(startX, startY, startX, startY);
-        case ("ELLIPSE") -> new Ellipse(startX, startY, startX, startY);
-        case ("RECTANGULAR") -> new Rectangular(startX, startY, startX, startY);
+        case ("LINE") -> new Line(startX, startY);
+        case ("ELLIPSE") -> new Ellipse(startX, startY);
+        case ("RECTANGULAR") -> new Rectangular(startX, startY);
         case ("BROKEN_LINE") -> new BrokenLine(startX, startY);
         case ("POLYGON") -> new Polygon(startX, startY);
         default -> null;

@@ -12,8 +12,8 @@ public abstract class SimpleFigure extends Figure {
         this.end = new Point2D(endX, endY);
     }
 
-    public SimpleFigure(double startX, double startY, double endX, double endY) {
+    public SimpleFigure(double startX, double startY) {
         this.start = new Point2D(startX, startY);
-        this.end = new Point2D(endX, endY);
+        this.end = new Point2D(startX, startY);
     }
 }

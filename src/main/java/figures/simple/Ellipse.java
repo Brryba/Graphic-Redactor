@@ -3,8 +3,8 @@ package figures.simple;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Ellipse extends SimpleFigure {
-    public Ellipse(double startX, double startY, double endX, double endY) {
-        super(startX, startY, endX, endY);
+    public Ellipse(double startX, double startY) {
+        super(startX, startY);
     }
 
     @Override
