@@ -10,6 +10,7 @@ public class Polygon extends ComplexFigure {
 
     @Override
     public void draw(GraphicsContext gc) {
+        super.draw(gc);
         double[] coordsXArr = coords.stream().mapToDouble(Point2D::getX).toArray(),
                 coordsYArr = coords.stream().mapToDouble(Point2D::getY).toArray();
         gc.fillPolygon(coordsXArr, coordsYArr, coords.size());

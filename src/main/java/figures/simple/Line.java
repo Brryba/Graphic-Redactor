@@ -9,7 +9,7 @@ public class Line extends SimpleFigure {
 
     @Override
     public void draw(GraphicsContext gc) {
-        gc.setStroke(this.borderColor);
+        super.draw(gc);
         gc.strokeLine(start.getX(), start.getY(),
                 end.getX(), end.getY());
         gc.stroke();

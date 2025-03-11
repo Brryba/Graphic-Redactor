@@ -9,7 +9,10 @@ public class Rectangular extends SimpleFigure {
 
     @Override
     public void draw(GraphicsContext gc) {
+        super.draw(gc);
         gc.fillRect(Math.min(start.getX(), end.getX()), Math.min(start.getY(), end.getY()),
+                Math.abs(start.getX() - end.getX()), Math.abs(start.getY() - end.getY()));
+        gc.strokeRect(Math.min(start.getX(), end.getX()), Math.min(start.getY(), end.getY()),
                 Math.abs(start.getX() - end.getX()), Math.abs(start.getY() - end.getY()));
     }
 }

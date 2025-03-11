@@ -9,9 +9,10 @@ public class BrokenLine extends ComplexFigure{
 
     @Override
     public void draw(GraphicsContext gc) {
+        super.draw(gc);
         for (int i = 1; i < coords.size(); i++) {
-            gc.moveTo(coords.get(i - 1).getX(), coords.get(i - 1).getY());
-            gc.lineTo(coords.get(i).getX(), coords.get(i).getY());
+            gc.strokeLine(coords.get(i - 1).getX(), coords.get(i - 1).getY(),
+                    coords.get(i).getX(), coords.get(i).getY());
             gc.stroke();
         }
     }
