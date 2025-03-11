@@ -11,6 +11,7 @@ public class GraphicRedactorApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GraphicRedactorApp.class.getResource("GraphicRedactor.fxml"));
+        FiguresFileChooser.setStage(stage);
         Scene scene = new Scene(fxmlLoader.load(), 1200, 700);
         stage.setTitle("Graphic Redactor");
         stage.setScene(scene);

@@ -7,7 +7,7 @@ public class UndoFigureManager {
     private UndoFigureManager() {}
 
     public static void undo() {
-        Figure figure = Figures.deleteLast();
+        Figure figure = Figures.removeLast();
         if (figure == null) {
             return;
         }

@@ -1,6 +1,5 @@
 package figures.complex;
 
-import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
 public class Polygon extends ComplexFigure {
@@ -11,8 +10,8 @@ public class Polygon extends ComplexFigure {
     @Override
     public void draw(GraphicsContext gc) {
         super.draw(gc);
-        double[] coordsXArr = coords.stream().mapToDouble(Point2D::getX).toArray(),
-                coordsYArr = coords.stream().mapToDouble(Point2D::getY).toArray();
+        double[] coordsXArr = coords.stream().mapToDouble(Point::x).toArray(),
+                coordsYArr = coords.stream().mapToDouble(Point::y).toArray();
         gc.fillPolygon(coordsXArr, coordsYArr, coords.size());
         gc.strokePolygon(coordsXArr, coordsYArr, coords.size());
     }

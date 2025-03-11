@@ -9,10 +9,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
-import services.FigureFabric;
-import services.RedoFigureManager;
+import services.*;
 import storage.Figures;
-import services.UndoFigureManager;
+
+import java.io.IOException;
+import java.util.List;
 
 public class MainController {
     @FXML
@@ -26,6 +27,8 @@ public class MainController {
     private ColorPicker figureColorPicker;
     @FXML
     private Slider thicknessSelector;
+    private final services.FileReader fileReader = new FileReader();
+    private final services.FileSaver fileSaver = new FileSaver();
 
     public void onMousePressed(MouseEvent event) {
         if (currentFigure == null) {
@@ -56,6 +59,34 @@ public class MainController {
     }
 
     @FXML
+    public void read() {
+        List<Figure> figures = null;
+        try {
+            figures = fileReader.open();
+        } catch (IOException e) {
+            new ErrorViewer().showError("Figures were not opened",
+                    "Error opening figures");
+        } catch (ClassNotFoundException | ClassCastException e) {
+            new ErrorViewer().showError("Figures were not opened",
+                    "File information is broken");
+        }
+        if (figures != null) {
+            Figures.createFigures(figures);
+        }
+        canvas.redraw(Figures.getFiguresList());
+    }
+
+    @FXML
+    public void save() {
+        try {
+            fileSaver.save();
+        } catch (IOException e) {
+            new ErrorViewer().showError("Figures were not saved",
+                    "Error writing figures");
+        }
+    }
+
+    @FXML
     public void undo() {
         UndoFigureManager.undo();
         canvas.redraw(Figures.getFiguresList());
@@ -75,6 +106,12 @@ public class MainController {
         } else if (new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_ANY, KeyCombination.SHIFT_ANY)
                 .match(event)) {
             redo();
+        } else if (new KeyCodeCombination(KeyCode.O, KeyCombination.CONTROL_ANY)
+                .match(event)) {
+            read();
+        } else if (new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_ANY)
+                .match(event)) {
+            save();
         }
     }
 

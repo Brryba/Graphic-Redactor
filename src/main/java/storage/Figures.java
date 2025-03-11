@@ -2,34 +2,28 @@ package storage;
 
 import figures.Figure;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
+import java.io.Serializable;
+import java.util.*;
 
-public class Figures {
-    static private final Deque<Figure> figures = new ArrayDeque<>();
+public class Figures implements Serializable {
+    static private Deque<Figure> figures = new ArrayDeque<>();
     private Figures() {}
 
-    public static List<Figure> getFiguresList() {
-        return figures.stream().toList();
+    public static ArrayList<Figure> getFiguresList() {
+        return new ArrayList<>(figures);
     }
 
-    public static Figure getLast() {
-        return figures.isEmpty() ? null : figures.getLast();
+    public static void createFigures(Collection<Figure> addedFigures) {
+        figures = new ArrayDeque<>(addedFigures);
     }
-
     public static void addFigure(Figure figure) {
         figures.add(figure);
     }
 
-    public static Figure deleteLast() {
+    public static Figure removeLast() {
         if (figures.isEmpty()) {
             return null;
         }
         return figures.removeLast();
-    }
-
-    public static void deleteFigure(Figure figure) {
-        figures.remove(figure);
     }
 }

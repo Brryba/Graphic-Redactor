@@ -31,80 +31,78 @@
         <padding>
             <Insets top="13.0"/>
         </padding>
-        <items>
-            <Pane prefHeight="0.0" prefWidth="0.0">
-                <Button layoutX="40.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header">
-                    <graphic>
-                        <VBox alignment="CENTER">
-                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
-                                <Image url="@../images/save.png"/>
-                            </ImageView>
-                            <Label text="Save to file" alignment="CENTER" styleClass="header"/>
-                        </VBox>
-                    </graphic>
-                </Button>
+        <Pane prefHeight="0.0" prefWidth="0.0">
+            <Button layoutX="40.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header" onAction="#save">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                            <Image url="@../images/save.png"/>
+                        </ImageView>
+                        <Label text="Save to file" alignment="CENTER" styleClass="header"/>
+                    </VBox>
+                </graphic>
+            </Button>
 
-                <Button layoutX="185.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="button">
-                    <graphic>
-                        <VBox alignment="CENTER">
-                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
-                                <Image url="@../images/open.png"/>
-                            </ImageView>
-                            <Label text="Open file" alignment="CENTER" styleClass="header"/>
-                        </VBox>
-                    </graphic>
-                </Button>
+            <Button layoutX="185.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="button" onAction="#read">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                            <Image url="@../images/open.png"/>
+                        </ImageView>
+                        <Label text="Open file" alignment="CENTER" styleClass="header"/>
+                    </VBox>
+                </graphic>
+            </Button>
 
-                <Button layoutX="330.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header" onAction="#undo">
-                    <graphic>
-                        <VBox alignment="CENTER">
-                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
-                                <Image url="@../images/undo.png"/>
-                            </ImageView>
-                            <Label text="Undo" alignment="CENTER" styleClass="header"/>
-                        </VBox>
-                    </graphic>
-                </Button>
+            <Button layoutX="330.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header" onAction="#undo">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                            <Image url="@../images/undo.png"/>
+                        </ImageView>
+                        <Label text="Undo" alignment="CENTER" styleClass="header"/>
+                    </VBox>
+                </graphic>
+            </Button>
 
-                <Button layoutX="475.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header" onAction="#redo">
-                    <graphic>
-                        <VBox alignment="CENTER">
-                            <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
-                                <Image url="@../images/redo.png"/>
-                            </ImageView>
-                            <Label text="Redo" alignment="CENTER" styleClass="header"/>
-                        </VBox>
-                    </graphic>
-                </Button>
+            <Button layoutX="475.0" layoutY="-5" prefWidth="100" prefHeight="65" styleClass="header" onAction="#redo">
+                <graphic>
+                    <VBox alignment="CENTER">
+                        <ImageView fitWidth="90" fitHeight="35" preserveRatio="true">
+                            <Image url="@../images/redo.png"/>
+                        </ImageView>
+                        <Label text="Redo" alignment="CENTER" styleClass="header"/>
+                    </VBox>
+                </graphic>
+            </Button>
 
-                <Label layoutX="666.0" layoutY="-5.0" text="Figure" styleClass="header"/>
-                <ComboBox layoutX="622" layoutY="25" value="Line" prefWidth="140" styleClass="header; button"
-                          style="-fx-background-color:#C8E6C9" fx:id="figureTypeSelector">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Line"/>
-                            <String fx:value="Ellipse"/>
-                            <String fx:value="Rectangular"/>
-                            <String fx:value="Polygon"/>
-                            <String fx:value="Broken Line"/>
-                        </FXCollections>
-                    </items>
-                </ComboBox>
+            <Label layoutX="666.0" layoutY="-5.0" text="Figure" styleClass="header"/>
+            <ComboBox layoutX="622" layoutY="25" value="Line" prefWidth="140" styleClass="header; button"
+                      style="-fx-background-color:#C8E6C9" fx:id="figureTypeSelector">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Line"/>
+                        <String fx:value="Ellipse"/>
+                        <String fx:value="Rectangular"/>
+                        <String fx:value="Polygon"/>
+                        <String fx:value="Broken Line"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
 
-                <Label layoutX="835.0" layoutY="-5.0" text="Thickness" styleClass="header"/>
-                <Slider layoutX="803.0" layoutY="28.0" max="10" prefWidth="135.0" blockIncrement="1" majorTickUnit="5"
-                        minorTickCount="4" value="1"
-                        showTickLabels="true" showTickMarks="true" snapToTicks="true" fx:id="thicknessSelector"/>
+            <Label layoutX="835.0" layoutY="-5.0" text="Thickness" styleClass="header"/>
+            <Slider layoutX="803.0" layoutY="28.0" max="10" prefWidth="135.0" blockIncrement="1" majorTickUnit="5"
+                    minorTickCount="4" value="1"
+                    showTickLabels="true" showTickMarks="true" snapToTicks="true" fx:id="thicknessSelector"/>
 
-                <Label layoutX="968.0" layoutY="-8.0" text="Border color" styleClass="header"/>
-                <ColorPicker value="black" layoutX="980.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
-                             style="-fx-background-color:#C8E6C9" fx:id="borderColorPicker"/>
+            <Label layoutX="968.0" layoutY="-8.0" text="Border color" styleClass="header"/>
+            <ColorPicker value="black" layoutX="980.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
+                         style="-fx-background-color:#C8E6C9" fx:id="borderColorPicker"/>
 
-                <Label layoutX="1075.0" layoutY="-8.0" text="Figure color" styleClass="header"/>
-                <ColorPicker layoutX="1087.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
-                             style="-fx-background-color:#C8E6C9" fx:id="figureColorPicker"/>
-            </Pane>
-        </items>
+            <Label layoutX="1075.0" layoutY="-8.0" text="Figure color" styleClass="header"/>
+            <ColorPicker layoutX="1087.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
+                         style="-fx-background-color:#C8E6C9" fx:id="figureColorPicker"/>
+        </Pane>
     </ToolBar>
     <opaqueInsets>
         <Insets/>
