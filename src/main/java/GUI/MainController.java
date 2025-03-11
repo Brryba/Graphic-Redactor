@@ -7,11 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
+import javafx.scene.paint.Color;
 import services.FigureFabric;
+import services.RedoFigureManager;
 import storage.Figures;
-import services.UndoManager;
+import services.UndoFigureManager;
 
 public class MainController {
     @FXML
@@ -55,18 +56,25 @@ public class MainController {
     }
 
     @FXML
-    public void onKeyReleased(KeyEvent event) {
-        if (new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_ANY)
-                .match(event)) {
-            UndoManager.undo();
-        }
+    public void undo() {
+        UndoFigureManager.undo();
         canvas.redraw(Figures.getFiguresList());
     }
 
-    public void ignoreEnterButton(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
-            ((ToggleButton) event.getSource()).setSelected(false);
-            onKeyPress(event);
+    @FXML
+    public void redo() {
+        RedoFigureManager.redo();
+        canvas.redraw(Figures.getFiguresList());
+    }
+
+    @FXML
+    public void onKeyReleased(KeyEvent event) {
+        if (new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_ANY)
+                .match(event)) {
+            undo();
+        } else if (new KeyCodeCombination(KeyCode.Z, KeyCombination.CONTROL_ANY, KeyCombination.SHIFT_ANY)
+                .match(event)) {
+            redo();
         }
     }
 
@@ -78,6 +86,6 @@ public class MainController {
 
     @FXML
     public void initialize() {
-
+        borderColorPicker.setValue(Color.BLACK);
     }
 }

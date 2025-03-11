@@ -22,9 +22,14 @@ public class Figures {
         figures.add(figure);
     }
 
-    public static void deleteLast() {
-        if (!figures.isEmpty()) {
-            figures.removeLast();
+    public static Figure deleteLast() {
+        if (figures.isEmpty()) {
+            return null;
         }
+        return figures.removeLast();
+    }
+
+    public static void deleteFigure(Figure figure) {
+        figures.remove(figure);
     }
 }
