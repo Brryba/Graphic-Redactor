@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public abstract class Figure implements Drawable, Undoable, Colorable {
     protected Color figureColor = Color.BLUE;
     protected Color borderColor = Color.BLACK;
-    protected int thickness = 0;
+    protected double thickness = 0;
 
     @Override
     public void setFigureColor(Color figureColor) {
@@ -21,7 +21,7 @@ public abstract class Figure implements Drawable, Undoable, Colorable {
     }
 
     @Override
-    public void setThickness(int thickness) {
+    public void setThickness(double thickness) {
         this.thickness = thickness;
     }
 }

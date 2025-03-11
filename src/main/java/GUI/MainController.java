@@ -4,8 +4,12 @@ import figures.*;
 import figures.complex.*;
 import figures.simple.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.*;
+import services.FigureFabric;
 import storage.Figures;
 import services.UndoManager;
 
@@ -13,6 +17,14 @@ public class MainController {
     @FXML
     private DrawingCanvas canvas;
     private Figure currentFigure;
+    @FXML
+    public ComboBox figureTypeSelector;
+    @FXML
+    private ColorPicker borderColorPicker;
+    @FXML
+    private ColorPicker figureColorPicker;
+    @FXML
+    private Slider thicknessSelector;
 
     public void onMousePressed(MouseEvent event) {
         if (currentFigure == null) {
@@ -51,26 +63,21 @@ public class MainController {
         canvas.redraw(Figures.getFiguresList());
     }
 
-public void ignoreEnterButton(KeyEvent event) {
-    if (event.getCode() == KeyCode.ENTER) {
-        ((ToggleButton) event.getSource()).setSelected(false);
-        onKeyPress(event);
+    public void ignoreEnterButton(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            ((ToggleButton) event.getSource()).setSelected(false);
+            onKeyPress(event);
+        }
     }
-}
 
-private Figure createFigure(double startX, double startY) {
-    return switch ("a") {
-        case ("LINE") -> new Line(startX, startY);
-        case ("ELLIPSE") -> new Ellipse(startX, startY);
-        case ("RECTANGULAR") -> new Rectangular(startX, startY);
-        case ("BROKEN_LINE") -> new BrokenLine(startX, startY);
-        case ("POLYGON") -> new Polygon(startX, startY);
-        default -> null;
-    };
-}
+    private Figure createFigure(double startX, double startY) {
+        FigureFabric figureFabric = new FigureFabric(figureColorPicker.getValue(),
+                borderColorPicker.getValue(), startX, startY, thicknessSelector.getValue());
+        return figureFabric.createFigure(figureTypeSelector.getValue().toString());
+    }
 
-@FXML
-public void initialize() {
+    @FXML
+    public void initialize() {
 
-}
+    }
 }

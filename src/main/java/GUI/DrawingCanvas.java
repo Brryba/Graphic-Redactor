@@ -3,6 +3,7 @@ package GUI;
 import figures.Figure;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import storage.Figures;
 
 import java.util.List;

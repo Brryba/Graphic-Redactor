@@ -80,7 +80,7 @@
 
                 <Label layoutX="666.0" layoutY="-5.0" text="Figure" styleClass="header"/>
                 <ComboBox layoutX="622" layoutY="25" value="Line" prefWidth="140" styleClass="header; button"
-                          style="-fx-background-color:#C8E6C9">
+                          style="-fx-background-color:#C8E6C9" fx:id="figureTypeSelector">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Line"/>
@@ -95,15 +95,15 @@
                 <Label layoutX="835.0" layoutY="-5.0" text="Thickness" styleClass="header"/>
                 <Slider layoutX="803.0" layoutY="28.0" max="10" prefWidth="135.0" blockIncrement="1" majorTickUnit="5"
                         minorTickCount="4"
-                        showTickLabels="true" showTickMarks="true" snapToTicks="true"/>
+                        showTickLabels="true" showTickMarks="true" snapToTicks="true" fx:id="thicknessSelector"/>
 
                 <Label layoutX="968.0" layoutY="-8.0" text="Border color" styleClass="header"/>
                 <ColorPicker layoutX="980.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
-                             style="-fx-background-color:#C8E6C9"/>
+                             style="-fx-background-color:#C8E6C9" fx:id="borderColorPicker"/>
 
                 <Label layoutX="1075.0" layoutY="-8.0" text="Figure color" styleClass="header"/>
                 <ColorPicker layoutX="1087.0" layoutY="18.0" prefHeight="40.0" prefWidth="55.0"
-                             style="-fx-background-color:#C8E6C9"/>
+                             style="-fx-background-color:#C8E6C9" fx:id="figureColorPicker"/>
             </Pane>
         </items>
     </ToolBar>
