@@ -121,7 +121,13 @@ public class MainController {
     private Figure createFigure(double startX, double startY) {
         FigureFabric figureFabric = new FigureFabric(figureColorPicker.getValue(),
                 borderColorPicker.getValue(), startX, startY, thicknessSelector.getValue());
-        return figureFabric.createFigure(figureTypeSelector.getValue().toString());
+        try {
+            return figureFabric.createFigure(figureTypeSelector.getValue().toString());
+        } catch (ReflectiveOperationException e) {
+            new ErrorViewer().showError("Error creating the figure",
+                    "Your figure was not created :(");
+            return null;
+        }
     }
 
     @FXML
