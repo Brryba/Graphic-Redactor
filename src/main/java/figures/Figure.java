@@ -9,17 +9,25 @@ import java.io.*;
 
 public abstract class Figure implements Drawable, Colorable, Serializable {
     public record Point(double x, double y) implements Serializable {}
+
     public record SerializableColor(double red, double green, double blue, double opacity) implements Serializable {
         public SerializableColor(Color color) {
             this(color.getRed(), color.getGreen(), color.getBlue(), color.getOpacity());
         }
-        public Color toColor() {
-            return new Color(red, green, blue, opacity);
+
+        public Color toColor(boolean isFinished) {
+            return new Color(red, green, blue, isFinished ? opacity : opacity / 2);
         }
     }
+
     protected SerializableColor figureColor;
     protected SerializableColor borderColor;
     protected double thickness = 0;
+    protected boolean isFinished = false;
+
+    public void setFinished(boolean isFinished) {
+        this.isFinished = isFinished;
+    }
 
     @Override
     public void setFigureColor(Color figureColor) {
@@ -40,10 +48,10 @@ public abstract class Figure implements Drawable, Colorable, Serializable {
     public void draw(GraphicsContext gc) {
         gc.setLineWidth(this.thickness);
         if (this.thickness > 0)
-            gc.setStroke(this.borderColor.toColor());
+            gc.setStroke(this.borderColor.toColor(this.isFinished));
         else {
             gc.setStroke(Color.TRANSPARENT);
         }
-        gc.setFill(this.figureColor.toColor());
+        gc.setFill(this.figureColor.toColor(this.isFinished));
     }
 }

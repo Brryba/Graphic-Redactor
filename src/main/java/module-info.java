@@ -1,4 +1,4 @@
-module org.example.graphic_editor {
+module graphic_editor {
     requires javafx.controls;
     requires javafx.fxml;
 

@@ -47,6 +47,7 @@ public class MainController {
 
     public void onMouseReleased() {
         if (currentFigure instanceof SimpleFigure) {
+            currentFigure.setFinished(true);
             currentFigure = null;
         }
         canvas.redraw(Figures.getFiguresList());
@@ -54,8 +55,10 @@ public class MainController {
 
     public void onKeyPress(KeyEvent event) {
         if (currentFigure instanceof ComplexFigure && event.getCode() == KeyCode.ENTER) {
+            currentFigure.setFinished(true);
             currentFigure = null;
         }
+        canvas.redraw(Figures.getFiguresList());
     }
 
     @FXML
