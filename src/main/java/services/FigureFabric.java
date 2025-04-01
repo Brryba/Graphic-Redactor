@@ -9,12 +9,14 @@ import figures.simple.Rectangular;
 import javafx.scene.paint.Color;
 
 import java.lang.reflect.Constructor;
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class FigureFabric {
-    private final Color figureColor, borderColor;
-    private final double startX, startY, thickness;
-    private final HashMap<String, Constructor<? extends Figure>> figureChooser;
+    private Color figureColor, borderColor;
+    private double startX, startY, thickness;
+    private final Map<String, Constructor<? extends Figure>> figureChooser;
 
     public Figure createFigure(String figureName) throws ReflectiveOperationException {
         Figure figure;
@@ -25,30 +27,37 @@ public class FigureFabric {
         return figure;
     }
 
-    public void put(Class<? extends Figure> figureClass) {
+    public void setFigureParams(Color figureColor, Color borderColor, double startX, double startY, double thickness) {
+        this.figureColor = figureColor;
+        this.borderColor = borderColor;
+        this.startX = startX;
+        this.startY = startY;
+        this.thickness = thickness;
+    }
+
+    public void put(String figureName, Class<? extends Figure> figureClass) {
         try {
-            figureChooser.put(figureClass.getSimpleName(),
+            figureChooser.put(figureName,
                     figureClass.getConstructor(double.class, double.class));
         } catch (NoSuchMethodException e) {
             //For plugins
         }
     }
 
-    private void initializeFigureChooser() {
-        put(Line.class);
-        put(Ellipse.class);
-        put(Rectangular.class);
-        put(Polygon.class);
-        put(BrokenLine.class);
+    public Collection<String> getAllFigureNames() {
+        return figureChooser.keySet();
     }
 
-    public FigureFabric(Color figureColor, Color borderColor, double startX, double startY, double thickness) {
-        figureChooser = new HashMap<>();
+    private void initializeFigureChooser() {
+        put("Line", Line.class);
+        put("Ellipse", Ellipse.class);
+        put("Rectangular", Rectangular.class);
+        put("Polygon", Polygon.class);
+        put("Broken Line", BrokenLine.class);
+    }
+
+    public FigureFabric() {
+        figureChooser = new LinkedHashMap<>();
         initializeFigureChooser();
-        this.figureColor = figureColor;
-        this.borderColor = borderColor;
-        this.startX = startX;
-        this.startY = startY;
-        this.thickness = thickness;
     }
 }

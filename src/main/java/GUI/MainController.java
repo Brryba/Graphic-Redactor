@@ -20,7 +20,7 @@ public class MainController {
     private DrawingCanvas canvas;
     private Figure currentFigure;
     @FXML
-    public ComboBox figureTypeSelector;
+    public ComboBox<String> figureTypeSelector;
     @FXML
     private ColorPicker borderColorPicker;
     @FXML
@@ -29,6 +29,7 @@ public class MainController {
     private Slider thicknessSelector;
     private final services.FileReader fileReader = new FileReader();
     private final services.FileSaver fileSaver = new FileSaver();
+    private final FigureFabric figureFabric = new FigureFabric();
 
     public void onMousePressed(MouseEvent event) {
         if (currentFigure == null) {
@@ -119,10 +120,10 @@ public class MainController {
     }
 
     private Figure createFigure(double startX, double startY) {
-        FigureFabric figureFabric = new FigureFabric(figureColorPicker.getValue(),
+        figureFabric.setFigureParams(figureColorPicker.getValue(),
                 borderColorPicker.getValue(), startX, startY, thicknessSelector.getValue());
         try {
-            return figureFabric.createFigure(figureTypeSelector.getValue().toString());
+            return figureFabric.createFigure(figureTypeSelector.getValue());
         } catch (ReflectiveOperationException e) {
             new ErrorViewer().showError("Error creating the figure",
                     "Your figure was not created :(");
@@ -133,5 +134,6 @@ public class MainController {
     @FXML
     public void initialize() {
         borderColorPicker.setValue(Color.BLACK);
+        figureTypeSelector.getItems().addAll(figureFabric.getAllFigureNames());
     }
 }

@@ -12,7 +12,6 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.VBox?>
@@ -77,15 +76,10 @@
             </Button>
 
             <Label layoutX="666.0" layoutY="-5.0" text="Figure" styleClass="header"/>
-            <ComboBox layoutX="622" layoutY="25" value="Line" prefWidth="140" styleClass="header; button"
+            <ComboBox layoutX="622" layoutY="25" value="Line" prefWidth="140" styleClass="header, button"
                       style="-fx-background-color:#C8E6C9" fx:id="figureTypeSelector">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Line"/>
-                        <String fx:value="Ellipse"/>
-                        <String fx:value="Rectangular"/>
-                        <String fx:value="Polygon"/>
-                        <String fx:value="Broken Line"/>
                     </FXCollections>
                 </items>
             </ComboBox>
