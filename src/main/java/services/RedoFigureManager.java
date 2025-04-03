@@ -21,4 +21,8 @@ public class RedoFigureManager {
         Figure figure = redoableDeque.removeLast();
         Figures.addFigure(figure);
     }
+
+    public static void clear() {
+        redoableDeque.clear();
+    }
 }
