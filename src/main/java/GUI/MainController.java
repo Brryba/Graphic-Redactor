@@ -34,6 +34,7 @@ public class MainController {
     public void onMousePressed(MouseEvent event) {
         if (currentFigure == null) {
             currentFigure = createFigure(event.getX(), event.getY());
+            Figures.addFigure(currentFigure);
             RedoFigureManager.clear();
         } else if (currentFigure instanceof ComplexFigure) {
             ((ComplexFigure) currentFigure).addPoint(event.getX(), event.getY());
