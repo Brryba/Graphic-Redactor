@@ -1,13 +1,14 @@
 package storage;
 
 import figures.Figure;
+import services.RedoFigureManager;
+import services.UndoFigureManager;
 
 import java.io.Serializable;
 import java.util.*;
 
 public class Figures implements Serializable {
     static private Deque<Figure> figures = new ArrayDeque<>();
-    private Figures() {}
 
     public static ArrayList<Figure> getFiguresList() {
         return new ArrayList<>(figures);
@@ -15,6 +16,7 @@ public class Figures implements Serializable {
 
     public static void createFigures(Collection<Figure> addedFigures) {
         figures = new ArrayDeque<>(addedFigures);
+        RedoFigureManager.clear();
     }
     public static void addFigure(Figure figure) {
         figures.add(figure);
@@ -25,5 +27,13 @@ public class Figures implements Serializable {
             return null;
         }
         return figures.removeLast();
+    }
+
+    public static int lastFigureIndex() {
+        return figures.size() - 1;
+    }
+
+    public static void clearFigures() {
+        figures.clear();
     }
 }

@@ -12,7 +12,9 @@ public class FileReader {
         File file = fileChooser.selectReadFile();
         if (file == null) return null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            return (List<Figure>) ois.readObject();
+            List<Figure> figures = (List<Figure>) ois.readObject();
+            UndoFigureManager.setFirstFigureIndex(figures.size() - 1);
+            return figures;
         }
     }
 }
