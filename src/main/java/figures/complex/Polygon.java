@@ -10,8 +10,8 @@ public class Polygon extends ComplexFigure {
     @Override
     public void draw(GraphicsContext gc) {
         super.draw(gc);
-        double[] coordsXArr = coords.stream().mapToDouble(Point::x).toArray(),
-                coordsYArr = coords.stream().mapToDouble(Point::y).toArray();
+        double[] coordsXArr = coords.stream().mapToDouble(Point::getX).toArray(),
+                coordsYArr = coords.stream().mapToDouble(Point::getY).toArray();
         gc.fillPolygon(coordsXArr, coordsYArr, coords.size());
         gc.strokePolygon(coordsXArr, coordsYArr, coords.size());
     }

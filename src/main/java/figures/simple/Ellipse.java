@@ -10,9 +10,9 @@ public class Ellipse extends SimpleFigure {
     @Override
     public void draw(GraphicsContext gc) {
         super.draw(gc);
-        gc.fillOval(Math.min(start.x(), end.x()), Math.min(start.y(), end.y()),
-                Math.abs(start.x() - end.x()), Math.abs(start.y() - end.y()));
-        gc.strokeOval(Math.min(start.x(), end.x()), Math.min(start.y(), end.y()),
-                Math.abs(start.x() - end.x()), Math.abs(start.y() - end.y()));
+        gc.fillOval(Math.min(start.getX(), end.getX()), Math.min(start.getY(), end.getY()),
+                Math.abs(start.getX() - end.getX()), Math.abs(start.getY() - end.getY()));
+        gc.strokeOval(Math.min(start.getX(), end.getX()), Math.min(start.getY(), end.getY()),
+                Math.abs(start.getX() - end.getX()), Math.abs(start.getY() - end.getY()));
     }
 }

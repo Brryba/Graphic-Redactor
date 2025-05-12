@@ -11,8 +11,9 @@ public class FileReader {
         FiguresFileChooser fileChooser = new FiguresFileChooser();
         File file = fileChooser.selectReadFile();
         if (file == null) return null;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
-            List<Figure> figures = (List<Figure>) ois.readObject();
+        XmlSerializer serializer = new XmlSerializer();
+        try (InputStream ois = new FileInputStream(file)) {
+            List<Figure> figures = (List<Figure>) serializer.fromXML(ois);
             UndoFigureManager.setFirstFigureIndex(figures.size() - 1);
             return figures;
         }

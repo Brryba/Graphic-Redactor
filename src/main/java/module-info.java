@@ -3,6 +3,8 @@ module graphic_editor {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
+    requires xstream;
+    requires static lombok;
 
     opens GUI to javafx.fxml;
     exports GUI;
@@ -11,4 +13,9 @@ module graphic_editor {
     exports figures.complex;
     exports storage;
     exports figures.interfaces;
+
+    opens figures to xstream;
+    opens figures.simple to xstream;
+    opens figures.complex to xstream;
+    opens figures.interfaces to xstream;
 }
