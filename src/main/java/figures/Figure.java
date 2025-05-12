@@ -40,10 +40,12 @@ public abstract class Figure implements Drawable, Colorable {
     public void draw(GraphicsContext gc) {
         gc.setLineWidth(this.thickness);
         if (this.thickness > 0)
-            gc.setStroke(this.borderColor);
+            gc.setStroke(this.isFinished ? this.borderColor : new Color(this.borderColor.getRed(),
+                    this.borderColor.getGreen(), this.borderColor.getBlue(), this.borderColor.getOpacity() / 2));
         else {
             gc.setStroke(Color.TRANSPARENT);
         }
-        gc.setFill(this.figureColor);
+        gc.setFill(this.isFinished ? this.figureColor : new Color(this.figureColor.getRed(),
+                this.figureColor.getGreen(), this.figureColor.getBlue(), this.figureColor.getOpacity() / 2));
     }
 }
