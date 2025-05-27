@@ -4,18 +4,10 @@ import figures.Figure;
 import storage.Figures;
 
 public class UndoFigureManager {
-    private UndoFigureManager() {}
-
-    private static int firstDrawnFigureIndex = 0;
-
-    public static void setFirstFigureIndex(int figureIndex) {
-        firstDrawnFigureIndex = figureIndex;
-    }
+    private UndoFigureManager() {};
 
     public static void undo() {
-        if (Figures.lastFigureIndex() == firstDrawnFigureIndex) {
-            Figures.clearFigures();
-        } else {
+        if (!Figures.getFiguresList().isEmpty()) {
             Figure figure = Figures.removeLast();
             if (figure == null) {
                 return;

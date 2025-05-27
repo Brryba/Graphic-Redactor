@@ -13,9 +13,7 @@ public class FileReader {
         if (file == null) return null;
         XmlSerializer serializer = new XmlSerializer();
         try (InputStream ois = new FileInputStream(file)) {
-            List<Figure> figures = (List<Figure>) serializer.fromXML(ois);
-            UndoFigureManager.setFirstFigureIndex(figures.size() - 1);
-            return figures;
+            return (List<Figure>) serializer.fromXML(ois);
         }
     }
 }
