@@ -99,10 +99,10 @@
                 <version>3.3.0</version>
                 <configuration>
                     <includes>
-                        <include>**/plugins/SimpleFigurePlugin.class</include>
-                        <include>**/figures/simple/SimpleFigure.class</include>
-                        <include>**/figures/Figure.class</include>
-                        <include>**/figures/Figure$Point.class</include>
+                        <include>**/plugins/*</include>
+                        <include>**/figures/simple/*</include>
+                        <include>**/figures/*</include>
+                        <include>**/figures/interfaces/*</include>
                     </includes>
                 </configuration>
             </plugin>

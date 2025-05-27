@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Slider;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
+import plugins.PluginLoader;
 import services.*;
 import storage.Figures;
 
@@ -30,6 +31,7 @@ public class MainController {
     private final services.FileReader fileReader = new FileReader();
     private final services.FileSaver fileSaver = new FileSaver();
     private final FigureFabric figureFabric = new FigureFabric();
+    private final PluginLoader pluginLoader = new PluginLoader();
 
     public void onMousePressed(MouseEvent event) {
         if (currentFigure == null) {
@@ -133,7 +135,11 @@ public class MainController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws ClassNotFoundException {
+
+        List<Class> plugins = pluginLoader.loadClasses();
+        System.out.println(plugins);
+
         borderColorPicker.setValue(Color.BLACK);
         figureTypeSelector.getItems().addAll(figureFabric.getAllFigureNames());
     }

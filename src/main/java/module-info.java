@@ -13,6 +13,7 @@ module graphic_editor {
     exports figures.complex;
     exports storage;
     exports figures.interfaces;
+    exports plugins;
 
     opens figures to xstream;
     opens figures.simple to xstream;
