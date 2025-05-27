@@ -12,7 +12,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class PluginLoader {
-    private static final String PLUGINS_DIRECTORY_PATH = "plugins";
+    private static final String PLUGINS_DIRECTORY_PATH = "used-plugins";
 
     public List<Class<? extends SimpleFigurePlugin>> loadClasses() {
         try {
