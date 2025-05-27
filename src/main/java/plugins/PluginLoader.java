@@ -1,5 +1,7 @@
 package plugins;
 
+import figures.Figure;
+
 import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -12,7 +14,7 @@ import java.util.jar.JarFile;
 public class PluginLoader {
     private static final String PLUGINS_DIRECTORY_PATH = "plugins";
 
-    public List<Class> loadClasses() {
+    public List<Class<? extends SimpleFigurePlugin>> loadClasses() {
         try {
             File dir = new File(PLUGINS_DIRECTORY_PATH);
             File[] jarFiles = dir.listFiles((dir1, name) ->
@@ -28,7 +30,7 @@ public class PluginLoader {
             }
 
             try (URLClassLoader cl = URLClassLoader.newInstance(urls)) {
-                List<Class> classes = new ArrayList<>();
+                List<Class<? extends SimpleFigurePlugin>> classes = new ArrayList<>();
                 for (File jarFile : jarFiles) {
                     try (JarFile jar = new JarFile(jarFile)) {
                         Enumeration<JarEntry> entries = jar.entries();
@@ -45,7 +47,7 @@ public class PluginLoader {
 
                             try {
                                 Class<?> c = cl.loadClass(className);
-                                classes.add(c);
+                                classes.add((Class<? extends SimpleFigurePlugin>) c);
                             } catch (NoClassDefFoundError | ClassNotFoundException e) {
                                 System.out.println("  Не удалось загрузить класс: " + className +
                                         ":\n" + e.getMessage());

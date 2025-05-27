@@ -10,6 +10,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.input.*;
 import javafx.scene.paint.Color;
 import plugins.PluginLoader;
+import plugins.SimpleFigurePlugin;
 import services.*;
 import storage.Figures;
 
@@ -135,12 +136,17 @@ public class MainController {
     }
 
     @FXML
-    public void initialize() throws ClassNotFoundException {
-
-        List<Class> plugins = pluginLoader.loadClasses();
-        System.out.println(plugins);
-
+    public void initialize() {
+        readPlugins();
         borderColorPicker.setValue(Color.BLACK);
         figureTypeSelector.getItems().addAll(figureFabric.getAllFigureNames());
+    }
+
+    private void readPlugins() {
+        List<Class<? extends SimpleFigurePlugin>> plugins = pluginLoader.loadClasses();
+        plugins.stream().forEach(plugin ->
+                figureFabric.put(plugin.getName(), plugin));
+        figureTypeSelector.getItems().addAll(plugins.stream().
+                map(Class::getName).toArray(String[]::new));
     }
 }

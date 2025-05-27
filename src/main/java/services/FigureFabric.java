@@ -40,7 +40,7 @@ public class FigureFabric {
             figureChooser.put(figureName,
                     figureClass.getConstructor(double.class, double.class));
         } catch (NoSuchMethodException e) {
-            //For plugins
+            System.err.println(e.getMessage());
         }
     }
 

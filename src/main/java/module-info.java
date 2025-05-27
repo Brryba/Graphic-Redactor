@@ -19,4 +19,5 @@ module graphic_editor {
     opens figures.simple to xstream;
     opens figures.complex to xstream;
     opens figures.interfaces to xstream;
+    opens plugins to xstream;
 }
