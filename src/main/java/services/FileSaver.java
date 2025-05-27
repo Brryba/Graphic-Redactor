@@ -13,7 +13,7 @@ public class FileSaver {
         FiguresFileChooser fileChooser = new FiguresFileChooser();
         File file = fileChooser.selectSaveFile();
         if (file == null) return;
-        XmlSerializer serializer = new XmlSerializer();
+        XmlSerializer serializer = XmlSerializer.getInstance();
         try (OutputStream outputStream = new FileOutputStream(file)) {
             serializer.toXML(Figures.getFiguresList(), outputStream);
         }

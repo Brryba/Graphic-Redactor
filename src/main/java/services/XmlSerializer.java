@@ -7,14 +7,38 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import javafx.scene.paint.Color;
+import plugins.SimpleFigurePlugin;
+
+import java.util.List;
 
 public class XmlSerializer extends XStream {
-    public XmlSerializer() {
+    private XmlSerializer() {
     }
 
     {
         this.registerConverter(new ColorConverter());
         this.allowTypesByWildcard(new String[] {"figures.**"});
+    }
+
+    private static XmlSerializer instance;
+
+    public static XmlSerializer getInstance() {
+        if (instance == null) {
+            instance = new XmlSerializer();
+        }
+        return instance;
+    }
+
+    public void addSupportedClasses(List<Class<? extends SimpleFigurePlugin>> classes) {
+        String[] classNames = classes.stream()
+                .map(Class::getName)
+                .toArray(String[]::new);
+        instance.allowTypes(classNames);
+
+        for (Class<? extends SimpleFigurePlugin> clazz : classes) {
+            ClassLoader pluginLoader = clazz.getClassLoader();
+            instance.setClassLoader(pluginLoader);
+        }
     }
 
     private static class ColorConverter implements Converter {

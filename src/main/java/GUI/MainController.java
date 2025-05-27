@@ -144,9 +144,10 @@ public class MainController {
 
     private void readPlugins() {
         List<Class<? extends SimpleFigurePlugin>> plugins = pluginLoader.loadClasses();
-        plugins.stream().forEach(plugin ->
+        plugins.forEach(plugin ->
                 figureFabric.put(plugin.getName(), plugin));
         figureTypeSelector.getItems().addAll(plugins.stream().
                 map(Class::getName).toArray(String[]::new));
+        XmlSerializer.getInstance().addSupportedClasses(plugins);
     }
 }
