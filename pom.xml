@@ -93,6 +93,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <includes>
+                        <include>**/plugins/SimpleFigurePlugin.class</include>
+                        <include>**/figures/simple/SimpleFigure.class</include>
+                        <include>**/figures/Figure.class</include>
+                        <include>**/figures/Figure$Point.class</include>
+                    </includes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
